@@ -47,7 +47,6 @@ class ProductController extends Controller
      * Display the specified resource.
      *
      * @param  Store $store
-     * @param  int  $id_product
      * @return \Illuminate\Http\Response
      */
     public function show(Store $store, $id_product)
@@ -59,25 +58,26 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  Product  $product
-     * @param  Store $store
+     * @param Store $store
+     * @param Product $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, Store $store, Product $product)
     {
-        // $product->update($request->all());
+        $product->update($request->all());
 
-        // return $product;
+        return $product;
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param Store $store
+     * @param Product $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Store $store, Product $product)
     {
-        //
+        return $product->delete();
     }
 }
